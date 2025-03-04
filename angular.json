@@ -56,7 +56,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/hyper-typer/"
+              "baseHref": "/hyper-typer/browser/"
             }
           },
           "defaultConfiguration": "production"
