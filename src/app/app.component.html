@@ -1,0 +1,36 @@
+<div class="typing-container">
+  <h2>Hyper Typer</h2>
+
+  <p class="text-display">
+    <span *ngFor="let char of currentTextArray; let i = index">
+      <span 
+        [ngClass]="{
+          'highlight': i === currentCharIndex,
+          'incorrect': i === incorrectCharIndex
+        }">
+        <ng-container *ngIf="char === ' '">
+          <span class="space"> </span>
+        </ng-container>
+        <ng-container *ngIf="char !== ' '">
+        {{char}}
+        </ng-container>
+      </span>
+    </span>
+  </p>
+
+  <textarea 
+    [(ngModel)]="userInput" 
+    (input)="checkTyping()" 
+    [attr.disabled]="isGameOver ? true : null"
+    placeholder="Start typing here..."></textarea>
+
+  <div class="stats">
+    <p >WPM: {{ wpm }}</p>
+  </div>
+
+  <button (click)="startNewGame()" [disabled]="!isGameOver">Restart</button>
+
+  <div *ngIf="isGameOver" class="game-over-message">
+    <p>Good job!</p>
+  </div>
+</div>
